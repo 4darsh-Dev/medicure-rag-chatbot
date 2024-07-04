@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "medicure-rag-chatbot"
+version = "0.1.0"
+description = "An AI chatbot implementing RAG technique with Meta-Llama2-7b Large Language Model, along with langchain and pinecone vector databases. "
+authors = ["Adarsh Maurya <adarsh@onionreads.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
