@@ -8,6 +8,10 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 setuptools = "^70.2.0"
+streamlit = "^1.36.0"
+langchain-community = "^0.2.6"
+huggingface-hub = "^0.23.4"
+pinecone = "^4.0.0"
 
 
 [build-system]
