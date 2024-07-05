@@ -1,15 +1,15 @@
 
 
-from langchain.prompts import PromptTemplate
-from langchain.llms import CTransformers
+from langchain_community.prompts import PromptTemplate
+from langchain_community.llms import CTransformers
 from src.helper import download_hf_embeddings,text_split,download_hf_model
 from pinecone import Pinecone, ServerlessSpec
-from langchain.vectorstores import Pinecone as LangchainPinecone
+from langchain_community.vectorstores import Pinecone as LangchainPinecone
 import pinecone
 import os
 from dotenv import load_dotenv
 from src.prompt import prompt_template
-from langchain.chains import RetrievalQA
+from langchain_community.chains import RetrievalQA
 
 load_dotenv()
 
@@ -40,7 +40,15 @@ llm=CTransformers(model=model_path,
 PROMPT=PromptTemplate(template=prompt_template, input_variables=["context", "question"])
 chain_type_kwargs={"prompt": PROMPT}
 
+
 # Create a LangChain vectorstore
+index_name="medicure-chatbot"
+pc = Pinecone(
+    api_key=PINECONE_API_KEY
+)
+
+index = pc.Index(index_name)
+
 docsearch = LangchainPinecone(index, embeddings.embed_query, "text")
 
 qa=RetrievalQA.from_chain_type(
