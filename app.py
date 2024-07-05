@@ -1,6 +1,6 @@
 
 
-from langchain_community.prompts import PromptTemplate
+from langchain.prompts import PromptTemplate
 from langchain_community.llms import CTransformers
 from src.helper import download_hf_embeddings,text_split,download_hf_model
 from pinecone import Pinecone, ServerlessSpec
